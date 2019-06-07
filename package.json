@@ -1,0 +1,48 @@
+{
+  "name": "@comet/cls",
+  "version": "1.0.0",
+  "description": "A Node.js library that implements Continuation-Local Storage",
+  "main": "lib/cls.js",
+  "scripts": {
+    "lint": "standard",
+    "start:test": "nodemon --inspect tests/integration/mockApp/index.js",
+    "test:unit": "nyc mocha -R spec tests/unit/**/*.unit.js --recursive",
+    "test:int": "mocha -R spec tests/integration/**/*.specs.js --recursive"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "include": [
+      "lib/*.js"
+    ],
+    "all": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellocomet/cls.git"
+  },
+  "keywords": [
+    "cls",
+    "continuation-local-storage",
+    "node",
+    "async_hooks"
+  ],
+  "author": "alexandre.m@comet.co",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hellocomet/cls/issues"
+  },
+  "homepage": "https://github.com/hellocomet/cls#readme",
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
+    "standard": "^12.0.1",
+    "uuid": "^3.3.2"
+  }
+}
