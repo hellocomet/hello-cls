@@ -1,19 +1,20 @@
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+# hello-cls
 
-# CLS
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build status](https://action-badges.now.sh/hellocomet/cls)](https://github.com/hellocomet/cls/actions)
 
 A Node.js library that implements Continuation-Local Storage for Node 10+
 
 ## Install & Requirements
 
-`npm i @comet/cls`  
+`npm i hello-cls`  
 or  
-`yarn add @comet/cls`
+`yarn add hello-cls`
 
 ## How to use
 
 ```javascript
-const { namespace } = require('@comet/cls')
+const { namespace } = require('hello-cls')
 
 const context = namespace.initContext()
 
@@ -30,3 +31,5 @@ context.close()
 console.log(namespace.get('beer'))
 // -> null
 ```
+
+Made with ❤️ at [**comet**](https://comet.co/)
