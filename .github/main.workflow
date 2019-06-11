@@ -1,6 +1,6 @@
 workflow "Build, Test, and Publish" {
   on = "push"
-  resolves = ["Publish"]
+  resolves = ["Send coverage to codecov", "Publish"]
 }
 
 action "Build" {
@@ -34,7 +34,7 @@ action "Send coverage to codecov" {
 
 # Filter for a new tag
 action "IsTag" {
-  needs = ["Lint", "Tests Unit", "Tests Int", "Send coverage to codecov"]
+  needs = ["Lint", "Tests Unit", "Tests Int"]
   uses = "actions/bin/filter@master"
   args = "tag"
 }
