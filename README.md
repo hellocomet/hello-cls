@@ -1,8 +1,9 @@
 # hello-cls
 
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Version](https://img.shields.io/npm/v/hello-cls.svg)](https://www.npmjs.com/package/hello-cls)
 [![Build status](https://action-badges.now.sh/hellocomet/cls)](https://github.com/hellocomet/cls/actions)
-[![codecov](https://codecov.io/gh/hellocomet/hello-cls/branch/master/graph/badge.svg)](https://codecov.io/gh/hellocomet/hello-cls)
+[![Codecov](https://codecov.io/gh/hellocomet/hello-cls/branch/master/graph/badge.svg)](https://codecov.io/gh/hellocomet/hello-cls)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 A Node.js library that implements Continuation-Local Storage for Node 10+
 
