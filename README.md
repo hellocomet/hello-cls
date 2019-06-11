@@ -2,6 +2,7 @@
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Build status](https://action-badges.now.sh/hellocomet/cls)](https://github.com/hellocomet/cls/actions)
+[![codecov](https://codecov.io/gh/hellocomet/hello-cls/branch/master/graph/badge.svg)](https://codecov.io/gh/hellocomet/hello-cls)
 
 A Node.js library that implements Continuation-Local Storage for Node 10+
 
