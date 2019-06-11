@@ -23,7 +23,7 @@ action "Tests Unit" {
 action "Tests Int" {
   needs = "Build"
   uses = "actions/npm@master"
-  args = "run test:int:sh"
+  args = "run test:int"
 }
 
 action "Send coverage to codecov" {
