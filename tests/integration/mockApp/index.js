@@ -19,6 +19,11 @@ app.get('/test/:id', async (req, res) => {
   res.send(await mockModel.get())
 })
 
+app.get('/test-event/:id', async (req, res) => {
+  const { params: { id } } = req
+  res.send(await mockModel.getWithEvent(id))
+})
+
 app.listen(3000, () => {
   console.log('listening')
 })

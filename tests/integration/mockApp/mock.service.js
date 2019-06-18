@@ -1,5 +1,5 @@
-async function randomWait () {
-  const timeout = (Math.random() * 500) + 500
+async function randomWait (min = 500) {
+  const timeout = (Math.random() * 500) + min
   return new Promise((resolve) => setTimeout(resolve, timeout))
 }
 
