@@ -1,6 +1,6 @@
 {
   "name": "hello-cls",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Node.js library that implements Continuation-Local Storage",
   "main": "lib/cls.js",
   "scripts": {
