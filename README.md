@@ -20,14 +20,19 @@ const { namespace } = require('hello-cls')
 
 const context = namespace.initContext()
 
+// I can't get a value from the namespace if one has not been set yet
+console.log(namespace.get('beer'))
+// -> undefined
+
 // I can set a value to a given key on the namespace
-namespace.set('beer', 🍺)
+namespace.set('beer', '🍺')
 
 // I can get a value from the namespace
 console.log(namespace.get('beer'))
-// -> 🍺
+// -> '🍺'
 
-context.close()
+// close with 'true' will flush state immediately
+context.close(true)
 
 // I can't get a value from the namespace if the context is closed
 console.log(namespace.get('beer'))
