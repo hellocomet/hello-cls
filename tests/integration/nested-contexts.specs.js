@@ -2,9 +2,10 @@
 /* eslint-disable no-unused-expressions, promise/param-names */
 
 const { expect } = require('chai')
-const { namespace } = require('../../lib/cls')
+const { Namespace } = require('../../lib/cls')
 
 const KEY = 'fruit'
+let namespace
 function getContextValue () {
   return namespace.get(KEY)
 }
@@ -16,6 +17,7 @@ describe('when nested contexts are initialized', () => {
 
   let resolvedPromiseResultValue, promise1ContextValue, promise2ContextValue, promise3ContextValue, afterAwaitContextValue, resolvedPromiseContextValue
   beforeEach(async () => {
+    namespace = new Namespace('test')
     resolvedPromiseResultValue = promise1ContextValue = promise2ContextValue = promise3ContextValue = afterAwaitContextValue = resolvedPromiseContextValue =null
     namespace.initContext()
     setContextValue('bananas')
