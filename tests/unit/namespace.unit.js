@@ -82,5 +82,17 @@ describe('Namespace', () => {
       expect(this.namespace).to.have.property('initContext').that.is.an.instanceOf(Function)
       expect(returnedContext).to.be.an.instanceOf(Context)
     })
+
+    describe('when initContext is executed', () => {
+      let context
+      beforeEach(() => {
+        context = this.namespace.initContext()
+      })
+
+      it('then the resulting context should be set as currentContext', () => {
+        expect(this.namespace._currentContext).to.equal(context)
+      })
+    })
+
   })
 })
