@@ -1,21 +1,18 @@
-const { namespace } = require('../../../lib/cls')
 const express = require('express')
 const app = express()
+const { asyncLocalStorage } = require('./store')
 const { mockModel } = require('./mock.model')
 
 app.use((req, res, next) => {
-  const context = namespace.initContext()
-
-  res.once('finish', () => {
-    context.close()
+  asyncLocalStorage.run({}, () => {
+    next()
   })
-
-  next()
 })
 
 app.get('/test/:id', async (req, res) => {
   const { params: { id } } = req
-  namespace.set('id', id)
+  const store = asyncLocalStorage.getStore()
+  store.id = id
   res.send(await mockModel.get())
 })
 

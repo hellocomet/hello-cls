@@ -1,6 +1,6 @@
-const { namespace } = require('../../../lib/cls')
 const { randomWait } = require('./mock.service')
 const { BaseModel } = require('./base.model')
+const { asyncLocalStorage } = require('./store')
 
 class MockModel extends BaseModel {
   constructor () {
@@ -22,7 +22,8 @@ const mockModel = new MockModel()
 
 mockModel.on('setIdInCLS', async (id) => {
   await randomWait(1)
-  namespace.set('id', id)
+  const store = asyncLocalStorage.getStore()
+  store.id = id
 })
 
 module.exports = {

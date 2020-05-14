@@ -1,6 +1,6 @@
+const { asyncLocalStorage } = require('./store')
 const EventEmitter = require('events')
 const { randomWait } = require('./mock.service')
-const { namespace } = require('../../../lib/cls')
 
 class BaseModel extends EventEmitter {
   constructor (item = '🍺') {
@@ -10,7 +10,7 @@ class BaseModel extends EventEmitter {
 
   async get () {
     await randomWait()
-    return `${this.item}.${namespace.get('id')}`
+    return `${this.item}.${asyncLocalStorage.getStore().id}`
   }
 }
 

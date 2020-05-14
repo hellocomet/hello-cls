@@ -6,7 +6,7 @@ const { expect } = require('chai')
 
 describe('CLS', () => {
   it(`should return a the request's unique id for more than one concurrents requests`, async () => {
-    const max = 10
+    const max = 100
     const promises = []
     while (promises.length < max) {
       const id = uuid()
@@ -25,7 +25,7 @@ describe('CLS', () => {
   })
 
   it(`should return a the request's unique id for more than one concurrents requests, id propagated with an async event`, async () => {
-    const max = 10
+    const max = 100
     const promises = []
     while (promises.length < max) {
       const id = uuid()
