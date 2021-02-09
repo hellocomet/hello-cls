@@ -1,5 +1,5 @@
-/* eslint-env node, mocha */
-
+/* eslint-env mocha */
+/* eslint-disable no-unused-expressions */
 const { expect } = require('chai')
 const { namespace } = require('../../lib/cls')
 
