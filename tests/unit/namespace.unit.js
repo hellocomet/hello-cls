@@ -93,6 +93,5 @@ describe('Namespace', () => {
         expect(this.namespace._currentContext).to.equal(context)
       })
     })
-
   })
 })

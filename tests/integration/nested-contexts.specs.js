@@ -1,39 +1,44 @@
 /* eslint-env node, mocha */
 /* eslint-disable no-unused-expressions, promise/param-names */
-
 const { expect } = require('chai')
 const { Namespace } = require('../../lib/cls')
 
 const KEY = 'fruit'
 let namespace
+
 function getContextValue () {
   return namespace.get(KEY)
 }
-function setContextValue(value) {
+
+function setContextValue (value) {
   namespace.set(KEY, value)
 }
 
 describe('when nested contexts are initialized', () => {
-
   let resolvedPromiseResultValue, promise1ContextValue, promise2ContextValue, promise3ContextValue, afterAwaitContextValue, resolvedPromiseContextValue
+
   beforeEach(async () => {
     namespace = new Namespace('test')
-    resolvedPromiseResultValue = promise1ContextValue = promise2ContextValue = promise3ContextValue = afterAwaitContextValue = resolvedPromiseContextValue =null
     namespace.initContext()
+
     setContextValue('bananas')
     const p1 = new Promise((r1) => {
       promise1ContextValue = getContextValue()
       namespace.initContext()
       setContextValue('oranges')
+
       const p2 = new Promise((r2) => {
         promise2ContextValue = getContextValue()
         setContextValue('apples')
+
         const p3 = new Promise((r3) => {
           promise3ContextValue = getContextValue()
           r3(getContextValue())
         })
+
         r2(p3)
       })
+
       r1(p2)
     }).then(result => {
       resolvedPromiseContextValue = getContextValue()
@@ -67,5 +72,4 @@ describe('when nested contexts are initialized', () => {
   it('then context value after awaiting promise 1 resolution is "strawberries"', () => {
     expect(afterAwaitContextValue).to.equal('strawberries')
   })
-
 })
