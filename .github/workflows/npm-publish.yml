@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: run lint
+      - run: npm run lint
 
   test-unit:
     needs: build
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: run test:unit
+      - run: npm run test:unit
 
   test-int:
     needs: build
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: run test:int
+      - run: npm run test:int
 
   coverage:
     needs: [test-lint, test-unit, test-int]
@@ -59,7 +59,7 @@ jobs:
           token: ${{secrets.CODECOV_TOKEN}}  
 
   publish-npm:
-    needs: build
+    needs: [test-lint, test-unit, test-int]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
