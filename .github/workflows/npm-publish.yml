@@ -10,56 +10,26 @@ on:
     types: [created]
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-
-  test-lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm run lint
-
-  test-unit:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm run test:unit
-
-  test-int:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm run test:int
-
-  coverage:
-    needs: [test-lint, test-unit, test-int]
-    runs-on: ubuntu-latest
-    steps:
+      - name: npm install and test
+        run: |
+          npm ci
+          npm run lint
+          npm run test:unit
+          npm run test:int
       - name: Codecov
         uses: codecov/codecov-action@v1.2.1
         with:
-          token: ${{secrets.CODECOV_TOKEN}}  
+          token: ${{secrets.CODECOV_TOKEN}}
 
   publish-npm:
-    needs: [test-lint, test-unit, test-int]
+    needs: [tests]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
