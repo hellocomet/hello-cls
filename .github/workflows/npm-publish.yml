@@ -19,7 +19,7 @@ jobs:
           node-version: 12
       - run: npm ci
 
-  test:lint:
+  test-lint:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
           node-version: 12
       - run: run lint
 
-  test:unit:
+  test-unit:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -39,7 +39,7 @@ jobs:
           node-version: 12
       - run: run test:unit
 
-  test:int:
+  test-int:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +50,7 @@ jobs:
       - run: run test:int
 
   coverage:
-    needs: [test:lint, test:unit, test:int]
+    needs: [test-lint, test-unit, test-int]
     runs-on: ubuntu-latest
     steps:
       - name: Codecov
